@@ -1,0 +1,42 @@
+// Multi-Agent Debate DAG
+digraph {
+	rankdir=TB
+	node [fontname=Arial shape=box style="rounded,filled"]
+	edge [fontname=Arial]
+	start [label=START fillcolor="#4CAF50" fontcolor=white shape=ellipse]
+	user_input [label="UserInputNode
+(Validate Topic)" fillcolor="#E3F2FD"]
+	controller [label="RoundsController
+(Enforce Turns)" fillcolor="#FFF3E0"]
+	agent_a [label="AgentA
+(Scientist)" fillcolor="#E8F5E9"]
+	agent_b [label="AgentB
+(Philosopher)" fillcolor="#E8F5E9"]
+	memory [label="MemoryNode
+(Update Context)" fillcolor="#F3E5F5"]
+	judge [label="JudgeNode
+(Evaluate & Decide)" fillcolor="#FCE4EC"]
+	logger [label="LoggerNode
+(Write Log)" fillcolor="#F5F5F5"]
+	end [label=END fillcolor="#F44336" fontcolor=white shape=ellipse]
+	start -> user_input [label="1. Initialize"]
+	user_input -> controller [label="2. Topic validated"]
+	controller -> agent_a [label="3a. AgentA turn"]
+	controller -> agent_b [label="3b. AgentB turn"]
+	controller -> judge [label="3c. Debate complete
+(8 rounds)"]
+	agent_a -> memory [label="4. Argument added"]
+	agent_b -> memory [label="4. Argument added"]
+	memory -> controller [label="5. Memory updated
+(Loop until complete)" style=dashed]
+	judge -> logger [label="6. Judgment ready"]
+	logger -> end [label="7. Log written"]
+	subgraph cluster_legend {
+		label="Workflow Legend" style=dashed
+		leg1 [label="Input/Output" fillcolor="#E3F2FD" shape=box style="rounded,filled"]
+		leg2 [label=Control fillcolor="#FFF3E0" shape=box style="rounded,filled"]
+		leg3 [label=Agents fillcolor="#E8F5E9" shape=box style="rounded,filled"]
+		leg4 [label=Processing fillcolor="#F3E5F5" shape=box style="rounded,filled"]
+		rank=same
+	}
+}

@@ -1,0 +1,42 @@
+# Multi-Agent Debate System Configuration
+
+# Logging
+log_path: "logs/debate_log"
+
+# Random seed (null = random, integer = deterministic)
+seed: null
+
+# Agent Personas
+personas:
+  agent_a:
+    id: "agent_a"
+    name: "Scientist"
+    role: "Research Scientist"
+    expertise: "empirical research, data analysis, scientific method"
+    style: "Evidence-based, analytical, focused on measurable outcomes"
+    
+  agent_b:
+    id: "agent_b"
+    name: "Philosopher"
+    role: "Philosophy Professor"
+    expertise: "ethics, epistemology, logic, history of ideas"
+    style: "Conceptual, principle-driven, focused on fundamental questions"
+
+# Debate Parameters
+debate:
+  max_rounds: 8
+  min_argument_length: 20
+  max_argument_length: 1000
+  
+# Validation Settings
+validation:
+  topic_min_length: 10
+  topic_max_length: 500
+  similarity_threshold: 0.7  # For duplicate detection
+  
+# Judge Settings
+judge:
+  evaluation_criteria:
+    - coherence
+    - engagement
+    - strength
