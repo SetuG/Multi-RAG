@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-"""
-Generate DAG visualization for the debate workflow.
-"""
+
 
 from graphviz import Digraph
 from pathlib import Path
